@@ -1,0 +1,25 @@
+{
+  "name": "lightbox-gallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mangakid/lightbox-gallery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mangakid/lightbox-gallery/issues"
+  },
+  "homepage": "https://github.com/mangakid/lightbox-gallery#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.16.5"
+  }
+}
