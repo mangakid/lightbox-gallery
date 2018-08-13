@@ -1,8 +1,19 @@
 import React, { Component } from "react";
-import Gallery from "../Gallery";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import Gallery from "../Gallery";
+import { fetchPhotos } from "../../actions";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.fetchPhotos();
+  }
+
   render() {
     return (
       <div>
@@ -15,4 +26,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchPhotos }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(App);
