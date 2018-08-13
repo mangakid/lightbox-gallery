@@ -1,0 +1,25 @@
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+img,
+.ownername {
+  cursor: pointer;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+}
+
+.ownername {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 30px;
+  width: 150px;
+}

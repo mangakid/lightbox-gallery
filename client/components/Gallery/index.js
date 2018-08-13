@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import queryString from "query-string";
 
 import { fetchPhotos } from "../../actions";
+import Thumbnail from "../Thumbnail";
 
 class Gallery extends Component {
   constructor(props) {
@@ -17,18 +18,26 @@ class Gallery extends Component {
 
   renderPhotos = () => {
     const { photo = [] } = this.props.photos;
-    return photo.map(photo => (
-      <li>
-        <img src={photo.url_q} />
-      </li>
-    ));
+    return photo.map(photo => {
+      const { id, owner, ownername, title, url_q } = photo;
+      return (
+        <li key={id} className="col s6 m4 l3">
+          <Thumbnail
+            photoId={id}
+            image={url_q}
+            caption={title}
+            ownerId={owner}
+            ownername={ownername}
+          />
+        </li>
+      );
+    });
   };
 
   render() {
     const { photos } = this.props;
     return (
-      <div>
-        <h3>Gallery</h3>
+      <div className="row">
         {photos.isLoading && <strong>Loading...</strong>}
         {photos.error && <span>{photos.error}</span>}
         {photos && <ul>{this.renderPhotos()}</ul>}

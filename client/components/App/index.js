@@ -6,8 +6,8 @@ import Gallery from "../Gallery";
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Lightbox gallery</h1>
+      <div className="container">
+        <h3>Lightbox gallery</h3>
         <Switch>
           <Route exact path="/" component={Gallery} />
         </Switch>
