@@ -27,7 +27,7 @@ router.route("/images").get(function(req, res) {
   const page = req.query.page ? `&page=${req.query.page}` : "";
   axios
     .get(
-      `https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${FLICKR_KEY}&format=json&extras=${extras}&per_page=10${page}&nojsoncallback=1`,
+      `https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${FLICKR_KEY}&format=json&extras=${extras}&per_page=12${page}&nojsoncallback=1`,
     )
     .then(response => {
       res.send(response.data);
