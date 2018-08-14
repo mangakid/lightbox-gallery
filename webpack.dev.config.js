@@ -25,6 +25,9 @@ module.exports = {
               importLoaders: 1,
             },
           },
+          {
+            loader: "postcss-loader",
+          },
         ],
       },
     ],
