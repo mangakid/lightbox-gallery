@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import queryString from "query-string";
 
+import "./style.css";
 import { fetchPhotos } from "../../actions";
 import Thumbnail from "../Thumbnail";
 
@@ -38,7 +39,14 @@ class Gallery extends Component {
     const { photos } = this.props;
     return (
       <div className="row">
-        {photos.isLoading && <strong>Loading...</strong>}
+        {photos.isLoading && (
+          <Fragment>
+            <div className="progress">
+              <div className="indeterminate" />
+            </div>
+            <strong className="loading col s12">Loading...</strong>
+          </Fragment>
+        )}
         {photos.error && <span>{photos.error}</span>}
         {photos && <ul>{this.renderPhotos()}</ul>}
       </div>
