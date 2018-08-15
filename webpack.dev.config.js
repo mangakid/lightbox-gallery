@@ -23,6 +23,9 @@ module.exports = {
             loader: "css-loader",
             options: {
               importLoaders: 1,
+              // modules: true,
+              // TODO use this once react css modules set up properly
+              // localIdentName: "[path]___[name]__[local]___[hash:base64:5]",
             },
           },
           {

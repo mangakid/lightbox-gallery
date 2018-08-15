@@ -1,3 +1,11 @@
 .loading {
   text-align: center;
 }
+
+.light-color {
+  background-color: #d8d8d8;
+
+  .dark-color {
+    background-color: #aaa;
+  }
+}

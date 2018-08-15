@@ -6,6 +6,7 @@ import queryString from "query-string";
 import "./style.css";
 import { fetchPhotos } from "../../actions";
 import Thumbnail from "../Thumbnail";
+import Lightbox from "../Lightbox";
 
 class Gallery extends Component {
   constructor(props) {
@@ -41,23 +42,27 @@ class Gallery extends Component {
       <div className="row">
         {photos.isLoading && (
           <Fragment>
-            <div className="progress">
-              <div className="indeterminate" />
+            <div className="progress light-color">
+              <div className="indeterminate dark-color" />
             </div>
             <strong className="loading col s12">Loading...</strong>
           </Fragment>
         )}
         {photos.error && <span>{photos.error}</span>}
         {photos && <ul>{this.renderPhotos()}</ul>}
+        {<Lightbox />}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ photos: state.photos });
+const mapStateToProps = state => ({ photos: state.gallery });
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ fetchPhotos }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Gallery);
