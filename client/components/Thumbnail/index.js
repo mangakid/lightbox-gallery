@@ -4,10 +4,15 @@ import { bindActionCreators } from "redux";
 
 import "./style.css";
 import { openLightbox } from "../../actions";
+import AsyncImage from "../AsyncImage";
+import SpinnerSmall from "../SpinnerSmall";
 
 class Thumbnail extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      placeholder: null,
+    };
   }
 
   handleImageClick = () => {
@@ -20,7 +25,11 @@ class Thumbnail extends Component {
       <div className="col s12 thumbnail">
         <div className="image-wrapper" onClick={this.handleImageClick}>
           <div className="caption">{caption}</div>
-          <img src={image} alt={caption} />
+          <AsyncImage
+            source={image}
+            alt={caption}
+            placeholder={<SpinnerSmall />}
+          />
         </div>
         <div className="ownername">
           <a

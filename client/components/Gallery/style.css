@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.gallery {
+  li {
+    min-width: 150px;
+  }
+}
+
 .light-color {
   background-color: #d8d8d8;
 

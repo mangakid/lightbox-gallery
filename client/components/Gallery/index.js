@@ -39,7 +39,7 @@ class Gallery extends Component {
   render() {
     const { photos } = this.props;
     return (
-      <div className="row">
+      <div className="row gallery">
         {photos.isLoading && (
           <Fragment>
             <div className="progress light-color">

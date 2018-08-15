@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { closeLightbox } from "../../actions";
-
+import AsyncBackgroundImage from "../AsyncBackgroundImage";
+import SpinnerSmall from "../SpinnerSmall";
 import "./style.css";
 
 class Lightbox extends Component {
@@ -19,9 +20,9 @@ class Lightbox extends Component {
         </div>
         <div className="container">
           <div className="image-wrapper col s12">
-            <div
-              className="lightbox-img"
-              style={{ backgroundImage: `url(${photo.url_c})` }}
+            <AsyncBackgroundImage
+              source={photo.url_c}
+              placeholder={<SpinnerSmall />}
             />
           </div>
           <div className="photo-info col s12">
