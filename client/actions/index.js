@@ -4,12 +4,14 @@ import {
   RECEIVE_PHOTOS,
   SET_LOADING,
   SET_LOADING_ERROR,
+  OPEN_LIGHTBOX,
+  CLOSE_LIGHTBOX,
 } from "./types";
 
 const LOADING_PHOTOS_ERROR_MESSAGE =
   "There was a problem fetching the photos. Please try again later.";
 
-export const fetchPhotos = (page = 1) => {
+const fetchPhotos = (page = 1) => {
   return dispatch => {
     dispatch(setLoading(true));
     axios
@@ -39,3 +41,8 @@ const receivePhotos = photos => {
 
 const setLoading = isLoading => ({ type: SET_LOADING, isLoading });
 const setLoadingError = error => ({ type: SET_LOADING_ERROR, error });
+
+const openLightbox = photoId => ({ type: OPEN_LIGHTBOX, photoId });
+const closeLightbox = () => ({ type: CLOSE_LIGHTBOX });
+
+export { fetchPhotos, openLightbox, closeLightbox };
