@@ -8,6 +8,7 @@ import "./style.css";
 import { fetchPhotos } from "../../actions";
 import Thumbnail from "../Thumbnail";
 import Lightbox from "../Lightbox";
+import Paginator from "../Paginator";
 
 const noOp = () => {};
 
@@ -39,11 +40,22 @@ class Gallery extends Component {
     });
   };
 
+  handlePagination = page => {
+    const { fetchPhotos, location, history } = this.props;
+    const query = queryString.parse(location.search);
+    query.page = page;
+    const stringifiedQuery = queryString.stringify(query);
+    history.push({ search: stringifiedQuery });
+    fetchPhotos(page);
+  };
+
   render() {
-    const { photos } = this.props;
+    const { fetchPhotos, photos } = this.props;
+    const { error, isLightboxOpen, isLoading, page, pages } = photos;
+    const showPaginator = pages > 1 && !isLightboxOpen;
     return (
       <div className="row gallery">
-        {photos.isLoading && (
+        {isLoading && (
           <Fragment>
             <div className="progress light-color">
               <div className="indeterminate dark-color" />
@@ -51,9 +63,16 @@ class Gallery extends Component {
             <strong className="loading col s12">Loading...</strong>
           </Fragment>
         )}
-        {photos.error && <span>{photos.error}</span>}
+        {error && <span>{error}</span>}
         {photos && <ul>{this.renderPhotos()}</ul>}
-        {<Lightbox />}
+        <Lightbox />
+        {showPaginator && (
+          <Paginator
+            page={page}
+            pages={pages}
+            paginate={this.handlePagination}
+          />
+        )}
       </div>
     );
   }
