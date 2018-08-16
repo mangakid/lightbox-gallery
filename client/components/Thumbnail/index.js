@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
 
 import "./style.css";
 import { openLightbox } from "../../actions";
 import AsyncImage from "../AsyncImage";
 import SpinnerSmall from "../SpinnerSmall";
+
+const noOp = () => {};
 
 class Thumbnail extends Component {
   constructor(props) {
@@ -52,3 +55,21 @@ export default connect(
   null,
   mapDispatchToProps,
 )(Thumbnail);
+
+Thumbnail.propTypes = {
+  caption: PropTypes.string,
+  image: PropTypes.string,
+  openLightbox: PropTypes.func,
+  ownerId: PropTypes.string,
+  ownername: PropTypes.string,
+  photoId: PropTypes.string,
+};
+
+Thumbnail.defaultProps = {
+  caption: "",
+  image: "",
+  openLightbox: noOp,
+  ownerId: "",
+  ownername: "",
+  photoId: "",
+};

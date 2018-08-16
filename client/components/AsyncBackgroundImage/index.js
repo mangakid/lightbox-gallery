@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+
 import "./style.css";
 
 class AsyncBackgroundImage extends Component {
@@ -45,6 +47,12 @@ class AsyncBackgroundImage extends Component {
 }
 
 export default AsyncBackgroundImage;
+
+AsyncBackgroundImage.propTypes = {
+  errorDisplay: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  source: PropTypes.string.isRequired,
+};
 
 AsyncBackgroundImage.defaultProps = {
   placeholder: <div>Placeholder</div>,

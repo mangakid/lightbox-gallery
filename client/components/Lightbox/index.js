@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
 
 import { closeLightbox } from "../../actions";
 import AsyncBackgroundImage from "../AsyncBackgroundImage";
 import SpinnerSmall from "../SpinnerSmall";
 import "./style.css";
+
+const noOp = () => {};
 
 class Lightbox extends Component {
   renderPhoto = () => {
@@ -53,3 +56,11 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Lightbox);
+
+Lightbox.propTypes = {};
+
+Lightbox.defaultProps = {
+  isLightboxOpen: false,
+  closeLightbox: noOp,
+  photo: {},
+};

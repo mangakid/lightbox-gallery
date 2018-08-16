@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+
 import "./style.css";
 
 class AsyncImage extends Component {
@@ -42,6 +44,13 @@ class AsyncImage extends Component {
 }
 
 export default AsyncImage;
+
+AsyncImage.propTypes = {
+  alt: PropTypes.string,
+  errorDisplay: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  source: PropTypes.string.isRequired,
+};
 
 AsyncImage.defaultProps = {
   alt: "",

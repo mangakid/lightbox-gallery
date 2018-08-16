@@ -2,11 +2,14 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import queryString from "query-string";
+import PropTypes from "prop-types";
 
 import "./style.css";
 import { fetchPhotos } from "../../actions";
 import Thumbnail from "../Thumbnail";
 import Lightbox from "../Lightbox";
+
+const noOp = () => {};
 
 class Gallery extends Component {
   constructor(props) {
@@ -66,3 +69,15 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Gallery);
+
+Gallery.propTypes = {
+  fetchPhotos: PropTypes.func,
+  location: PropTypes.object,
+  photos: PropTypes.object,
+};
+
+Gallery.defaultProps = {
+  fetchPhotos: noOp,
+  location: { search: "" },
+  photos: {},
+};
